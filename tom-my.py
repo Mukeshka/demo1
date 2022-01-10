@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 
 
-d=pd.read_excel("Mann.xlsx")
+d=pd.read_excel("Mann")
 #st.write("The shape is ",d.shape)
 d1=d[:4571]
 d2=d[4571:9142]
