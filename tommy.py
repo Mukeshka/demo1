@@ -1,4 +1,3 @@
-
 import streamlit as st
 import numpy as np
 from sklearn import preprocessing
@@ -25,7 +24,6 @@ a_type=st.selectbox("Type",["LR","DT","ADABOOST [Recommended]","SVM"])
 #cl=st.selectbox("Select the number of clusters",[2,3,4,5,6,7,8,9,10])
 st.write("This is Version 1")
 g,r=0,0
-
 p=-1
 j=1
 rr=st.radio("Select the cell",("1","2","3","4"))
@@ -47,11 +45,9 @@ if a_type=="LR":
 				X=d[['A','B','C','D','E']]
 				y=d['Y']
 				X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.001)
-
 				#st.write("The shape is ",d.shape)
 				clf = LogisticRegression(random_state=0).fit(X, y)
 				#st.write("You selected ",s_type)
-
 				p=clf.predict([[a,b,c,e,f]])
 				if p%2==0:
 					#r=r+1
@@ -70,11 +66,9 @@ if a_type=="LR":
 				X=d[['A','B']]
 				y=d['Y']
 				X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.001)
-
 				#st.write("The shape is ",d.shape)
 				clf = LogisticRegression(random_state=0).fit(X, y)
 				#st.write("You selected ",s_type)
-
 				p=clf.predict([[a,b]])
 				if p%2==0:
 					#r=r+1
@@ -95,11 +89,9 @@ if a_type=="LR":
 				X=d[['A','B','C']]
 				y=d['Y']
 				X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.001)
-
 				#st.write("The shape is ",d.shape)
 				clf = LogisticRegression(random_state=0).fit(X, y)
 				#st.write("You selected ",s_type)
-
 				p=clf.predict([[a,b,c]])
 				if p%2==0:
 					#r=r+1
@@ -120,7 +112,6 @@ elif a_type=="ADABOOST [Recommended]":
 			X=d[['A','B','C']]
 			y=d['Y']
 			X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.001)
-
 			#st.write("The shape is ",d.shape)
 			abc = AdaBoostClassifier(n_estimators=100,learning_rate=3,base_estimator=clf)
 			# Train Adaboost Classifer
@@ -128,7 +119,6 @@ elif a_type=="ADABOOST [Recommended]":
 			#Predict the response for test dataset
 			y_pred = model.predict([[a,b,a+1]])
 			p=y_pred[0]
-
 			if p==0:
 				#r=r+1
 				st.error("Next is RED")
@@ -139,8 +129,6 @@ elif a_type=="ADABOOST [Recommended]":
 				#st.success("Next is GREEN - {} %".format((g/5)*100))
 			#else:
 				#st.error("Next is RED - {} %".format((r/5)*100))
-
-
 elif a_type=="SVM":
 	if st.button("Classify"):
 		a=st.number_input("Enter the Last Period last digit",value=1,step=1)
@@ -152,11 +140,9 @@ elif a_type=="SVM":
 			X=d[['A','B','C']]
 			y=d['Y']
 			X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.001)
-
 			#st.write("The shape is ",d.shape)
 			clf.fit(X_train,y_train)
 			#st.write("You selected ",s_type)
-
 			p=clf.predict([[a,b,a+1]])
 			if p==0:
 				#r=r+1
@@ -179,7 +165,6 @@ elif a_type=="DT":
 			X=d[['A','B','C']]
 			y=d['Y']
 			X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.001)
-
 			#st.write("The shape is ",d.shape)
 			clf.fit(X,y)
 			#st.write("You selected ",s_type)
@@ -195,6 +180,3 @@ elif a_type=="DT":
 				#st.success("Next is GREEN - {} %".format((g/5)*100))
 			#else:
 				#st.error("Next is RED - {} %".format((r/5)*100))
-
-
-
