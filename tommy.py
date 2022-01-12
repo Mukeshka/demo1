@@ -1,24 +1,67 @@
-import streamlit as st
-import numpy as np
-from sklearn import preprocessing
-import pandas as pd
-#from sklearn.cluster import KMeans
-#from sklearn.preprocessing import StandardScaler
-from sklearn import svm
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
-import sklearn
-from sklearn.ensemble import AdaBoostClassifier
-from sklearn.linear_model import LogisticRegression
-# from pycricbuzz import Cricbuzz
-# c=Cricbuzz()
-# matches=c.matches()
-# for match in matches:
-# 	st.write(match)
-# 	if (match['mchstate'] != "nextlive"):
-# 		  st.write(c.livescore(match['id']))
-# 		  st.write(c.commentary(match['id']))
-# 		  st.write(c.scoreboard(match['id']))			   
+
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+from os import system, name
+import itertools
+import threading
+import time
+import sys
+import datetime
+from base64 import b64decode,b64encode
+from datetime import date
+
+expirydate = datetime.date(2022,  1, 12 )
+#expirydate = datetime.date(2021, 12, 30)
+today=date.today()
+def hero():
+
+    def chalo():
+        done = False
+        #here is the animation
+        def animate():
+            for c in itertools.cycle(['|', '/', '-', '\\']) :
+                if done:
+                    break
+                sys.stdout.write('\rconnecting to server for next colour--------- ' + c)
+                sys.stdout.flush()
+                time.sleep(0.1)
+            sys.stdout.write('\rDone!     ')
+
+        t = threading.Thread(target=animate)
+        t.start()
+
+        #long process here
+        time.sleep(20)
+        done = True
+
+    def chalo1():
+        done = False
+        #here is the animation
+        def animate():
+            for c in itertools.cycle(['|', '/', '-', '\\']):
+                if done:
+                    break
+                sys.stdout.write('\rgetting the colour wait --------- ' + c)
+                sys.stdout.flush()
+                time.sleep(0.1)
+            sys.stdout.write('\rDone!     ')
+
+        t = threading.Thread(target=animate)
+        t.start()
+
+        #long process here
+        time.sleep(20)
+        done = True
+
+    def clear():
+        # for windows
+        if name == 'nt':
+            _ = system('cls')
+        # for mac and linux(here, os.name is 'posix')
+        else:
+            _ = system('clear')
+
 a_type=st.selectbox("Type",["LR","DT","ADABOOST [Recommended]","SVM"])
 #st.write("The shape is ",d.shape)
 #cl=st.selectbox("Select the number of clusters",[2,3,4,5,6,7,8,9,10])
